@@ -59,7 +59,6 @@ install_github <- function(repo,
 
   remotes <- lapply(repo, github_remote, ref = ref,
     subdir = subdir, auth_token = auth_token, host = host)
-
   install_remotes(remotes, auth_token = auth_token, host = host,
     dependencies = dependencies,
     upgrade = upgrade,
@@ -78,7 +77,6 @@ github_remote <- function(repo, ref = "master", subdir = NULL,
 
   meta <- parse_git_repo(repo)
   meta <- github_resolve_ref(meta$ref %||% ref, meta, auth_token)
-
   remote("github",
     host = host,
     package = meta$package,

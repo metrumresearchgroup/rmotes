@@ -1,3 +1,5 @@
+INSTALL_SOURCE <- new.env()
+INSTALL_SOURCE$packages <- NULL
 #' Install a remote package.
 #'
 #' This:
@@ -48,8 +50,10 @@ install_remote <- function(remote,
 
   bundle <- remote_download(remote, quiet = quiet)
   on.exit(unlink(bundle), add = TRUE)
-
   source <- source_pkg(bundle, subdir = remote$subdir)
+  # this will only save a single version so wouldn't work if multiple package
+  # types were pulled I don't think
+  INSTALL_SOURCE$packages[[package_name]] <- list(source = source)
   on.exit(unlink(source, recursive = TRUE), add = TRUE)
 
   update_submodules(source, quiet)

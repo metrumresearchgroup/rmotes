@@ -21,24 +21,8 @@ install <- function(pkgdir, dependencies, quiet, build, build_opts, upgrade,
   install_deps(pkgdir, dependencies = dependencies, quiet = quiet,
     build = build, build_opts = build_opts, upgrade = upgrade, repos = repos, type = type, ...)
 
-  if (isTRUE(build)) {
-    dir <- tempfile()
-    dir.create(dir)
-    on.exit(unlink(dir), add = TRUE)
-
-    pkgdir <- safe_build_package(pkgdir, build_opts, dir, quiet)
-  }
-
-  safe_install_packages(
-    pkgdir,
-    repos = NULL,
-    quiet = quiet,
-    type = "source",
-    ...
-  )
-
-  pkg_name <- load_pkg_description(pkgdir)$package
-  invisible(pkg_name)
+  # just give something character back
+  invisible(pkgdir)
 }
 
 
