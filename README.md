@@ -19,3 +19,9 @@ what it is doing.
 The biggest change is hooking into the install command(s) to not actually install,
 rather download and get to the point of installation but return there, without
 cleaning up the temporarily downloaded folders.
+
+## will this get merged in some way back to remotes?
+
+Definitely not! The intent is not to add functionality, but rather to completely change
+what the package is doing. This wouldn't really make sense to fold back into remotes
+as it is a quite hacky.
