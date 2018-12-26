@@ -1,5 +1,31 @@
 INSTALL_SOURCE <- new.env()
 INSTALL_SOURCE$packages <- NULL
+
+add_pkg_src <- function(package_name, source, remote_sha) {
+  if (is.null(INSTALL_SOURCE$packages[[package_name]])) {
+    INSTALL_SOURCE$packages[[package_name]] <- list()
+    INSTALL_SOURCE$packages[[package_name]][[remote_sha]] <- source
+  } else {
+    INSTALL_SOURCE$packages[[package_name]][[remote_sha]] <- source
+  }
+}
+
+#' get package sources
+#' @details
+#' rmotes only!
+#' @export
+get_pkg_srcs <- function() {
+  return(INSTALL_SOURCE$packages)
+}
+
+#' reset package sources
+#' @details
+#' rmotes only!
+#' @export
+reset_pkg_srcs <- function() {
+  INSTALL_SOURCE$packages <- NULL
+}
+
 #' Install a remote package.
 #'
 #' This:
@@ -53,7 +79,11 @@ install_remote <- function(remote,
   source <- source_pkg(bundle, subdir = remote$subdir)
   # this will only save a single version so wouldn't work if multiple package
   # types were pulled I don't think
-  INSTALL_SOURCE$packages[[package_name]] <- list(source = source)
+  add_pkg_src(
+    package_name,
+    source = source,
+    remote_sha = remote_sha
+    )
   on.exit(unlink(source, recursive = TRUE), add = TRUE)
 
   update_submodules(source, quiet)
