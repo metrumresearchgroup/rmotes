@@ -84,7 +84,7 @@ install_remote <- function(remote,
     source = source,
     remote_sha = remote_sha
     )
-  on.exit(unlink(source, recursive = TRUE), add = TRUE)
+  #on.exit(unlink(source, recursive = TRUE), add = TRUE)
 
   update_submodules(source, quiet)
 
