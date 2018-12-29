@@ -1,6 +1,6 @@
 Package: rmotes
 Title: R Package Installation from Remote Repositories, Including 'GitHub'
-Version: 2.0.2.9000
+Version: 1.0.0
 Authors@R: c(
     person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre")),
     person("Hadley", "Wickham", role = c("aut")),
@@ -9,15 +9,16 @@ Authors@R: c(
     person("RStudio", role = "cph"),
     person("Martin", "Morgan", role = "aut"),
     person("Dan", "Tenenbaum", role = "aut"),
-    person("Mango Solutions", role = "cph")
+    person("Mango Solutions", role = "cph"),
+    person("Devin", "Pastoor", role = c("aut"))
     )
 Description: Download and install R packages stored in 'GitHub',
     'BitBucket', or plain 'subversion' or 'git' repositories. This package
     is a lightweight replacement of the 'install_*' functions in 'devtools'.
     Indeed most of the code was copied over from 'devtools'.
 License: GPL (>= 2)
-URL: https://github.com/r-lib/remotes#readme
-BugReports: https://github.com/r-lib/remotes/issues
+URL: https://github.com/metrumresearchgroup/rmotes
+BugReports: https://github.com/metrumresearchgroup/rmotes/issues
 Imports:
     methods,
     stats,
